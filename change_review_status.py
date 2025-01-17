@@ -10,8 +10,8 @@ secret = config('SECRET')
 api_url = "https://synergy.halopsa.com/api"
 auth_url = "https://synergy.halopsa.com/auth"
 tenant = "synergy"
-start_date = "2024-02-01T00:00:00.00" # yyyy-mm-dd
-end_date = "2025-03-01T00:00:00.00" # yyyy-mm-dd
+start_date = "2024-04-01T00:00:00.00" # yyyy-mm-dd
+end_date = "2024-12-31T00:00:00.00" # yyyy-mm-dd
 customer_id = "355"
 start_from_ticket_id = None
 
@@ -145,7 +145,7 @@ def process_tickets(token, tickets_data, start_from_ticket_id, token_endpoint, c
                 response_action_recalc = requests.post(actions_base_url, headers=action_post_headers, data=body_action_post)
                 try:
                     post_response_data = response_action_recalc.json()
-                    print(f"Ticket ID = {ticket['id']} Action ID = {post_response_data['id']} - recalculated (for Client = {ticket['client_name']})")
+                    print(f"Ticket ID = {ticket['id']} Action ID = {post_response_data['id']} - review status changed (for Client = {ticket['client_name']})")
                     
                 except json.JSONDecodeError:
                     print(f"Failed to decode JSON response for Ticket ID = {ticket['id']} Action ID = {action['id']}")
@@ -155,7 +155,7 @@ def process_tickets(token, tickets_data, start_from_ticket_id, token_endpoint, c
                 time.sleep(1)
                 
             else:
-                print(f"Ticket ID = {ticket['id']} Action ID = {action['id']} - not recalculated (for Client = {ticket['client_name']}) as no time entered")
+                print(f"Ticket ID = {ticket['id']} Action ID = {action['id']} - review status not changed (for Client = {ticket['client_name']}) as no time entered")
 
 
 
