@@ -10,10 +10,10 @@ secret = config('SECRET')
 api_url = "https://synergy.halopsa.com/api"
 auth_url = "https://synergy.halopsa.com/auth"
 tenant = "synergy"
-start_date = "2024-04-01T00:00:00.00" # yyyy-mm-dd
-end_date = "2024-12-31T00:00:00.00" # yyyy-mm-dd
-customer_id = "355"
-start_from_ticket_id = None
+start_date = "2024-02-20T00:00:00.00" # yyyy-mm-dd
+end_date = "2024-03-13T00:00:00.00" # yyyy-mm-dd    
+customer_id = "360"
+start_from_ticket_id = None # None to process all tickets
 
 
 # Construct URLs
