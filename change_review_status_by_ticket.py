@@ -8,7 +8,7 @@ api_url = "https://synergy.halopsa.com/api"
 auth_url = "https://synergy.halopsa.com/auth"
 tenant = "synergy"
 
-ticket_id = 358926  # Set the ticket ID here
+ticket_id = 380591  # Set the ticket ID here
 
 token_endpoint = f"{auth_url}/token?tenant={tenant}"
 actions_base_url = f"{api_url}/Actions"
@@ -48,6 +48,9 @@ def main():
         action_detail = action_response.json()
         if not isinstance(action_detail, dict):
             print(f"  Action ID = {action['id']} - unexpected response: {action_detail}")
+            continue
+        if action_detail.get('ticket_id') != ticket_id:
+            print(f"  Action ID = {action['id']} - belongs to ticket {action_detail.get('ticket_id')}, skipping")
             continue
         if not action_detail.get('actreviewed'):
             print(f"  Action ID = {action['id']} - not reviewed, skipping")
